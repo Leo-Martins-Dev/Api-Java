@@ -15,6 +15,13 @@ public class TasksApi {
     @Autowired
     private TaskFacade taskFacade;
 
+    @GetMapping("/{taskId}")
+    @ResponseBody
+    public TaskDto getTaskById(@PathVariable("taskId") Long taskId) {
+        return taskFacade.get(taskId);
+    }
+
+
     @PostMapping
     @ResponseBody
     public TaskDto create (@RequestBody TaskDto taskDto){
